@@ -1,5 +1,6 @@
 require_relative 'grade_reader_class'
 require_relative 'student_grades_class'
+require_relative 'assignment_grade_class'
 require_relative 'grade_summary_class'
 require_relative 'final_grade_class'
 require_relative 'write_to_file_class'
@@ -7,17 +8,19 @@ require_relative 'write_to_file_class'
 
 require 'pry'
 require 'csv'
-
+binding.pry
 puts "Hi welcome to your grade book?"
 puts "To load your grades in type your file name"
 file_name = gets.chomp
 file = GradeReader.new
+raise "#{file_name} does not exist" unless File.exists? file_name
 file.load_data(file_name)
 puts "What would you like to do?"
 puts "To view course analytics type 'course analytics'"
 puts "To view student averages type 'view student averages'"
 puts "To out put your grades to a file for report cards type 'report cards'"
 command = gets.chomp
+
 while command.downcase != 'done'
   if command == 'course analytics'
     grades = GradeSummary.new(file)
@@ -46,14 +49,9 @@ while command.downcase != 'done'
     puts "What do you want to do? Type 'done' to exit"
     command = gets.chomp
   end
-  if command != "view student averages" || command != 'report cards' || command != 'course analytics'
-    puts "invalid command please try again, type 'done' to exit"
-    command = gets.chomp
-  end
 end
 
-
-  # def student_average(student_name)   
+ # def student_average(student_name)   
   #   @students_and_scores.student_grades.each do |name|
  #     if name[:name] == student_name
   #         @student_name = name[:name]
@@ -67,5 +65,5 @@ end
   #       puts @finial_average        
   #       end
   #     end
-  #   end
+  #   end 
 
