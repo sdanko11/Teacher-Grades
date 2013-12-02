@@ -1,9 +1,3 @@
-require_relative 'student_grades_class'
-require_relative 'grade_summary_class'
-require_relative 'grade_reader_class'
-require_relative 'write_to_file_class'
-require_relative 'final_grade_class'
-
 class FinalGrade
 
   attr_reader :final_grades_formatted
