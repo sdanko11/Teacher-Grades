@@ -31,7 +31,7 @@ class GradeSummary
     variences = []
     @all_grades.each do |number|
       varience = (number - class_average)*(number - class_average)
-        variences << varience
+      variences << varience
     end
     
     total_of_variences = sum(variences)
